@@ -1,0 +1,147 @@
+// fonts
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap');
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css");
+
+@font-face {
+    font-family: Moonshine;
+    src: url('Moonshine-Regular.otf');
+}
+
+@font-face {
+    font-family: Moonshine;
+    src: url('Moonshine-Bold.otf');
+    font-weight: bold;
+}
+
+// variables
+$main-width: 1160px; 
+//1100px is the actual content width, 
+//add 60 for padding on the sides
+$tablet: 768px;
+$landscape: 568px;
+$mobile: 320px;
+$primary-color: #D9252A;
+$secondary-font: 'Nunito Sans', sans-serif;
+
+// defaults
+body, html {
+    background: #000;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+div, span, a, textarea, input {
+    font-family: $secondary-font;
+    font-size: 18px;
+    color: #fff;
+}
+
+::selection {
+    color: #fff;
+    background: $primary-color;
+  }
+
+h1, h2, h3, h4, h5 {
+    font-family: Moonshine;
+}
+
+// global styles
+.main-container {
+    max-width: $main-width;
+    padding: 0px 30px;
+    margin: 0 auto;
+}
+
+.title-container {
+    div {
+        font-family: Moonshine;
+        font-size: 60px;
+        line-height: 100%;
+        padding: 0px 15px;
+        &:nth-child(1){
+            color: $primary-color;
+        }
+        &:nth-child(2){
+            color: #fff;
+        }
+        &.black {
+            color: #000;
+        }
+    }
+}
+
+button {
+    border-radius: 20px;
+    border: none;
+    text-transform: uppercase;
+    padding: 0px 20px;
+    transition: all .25s ease-in-out;
+    &.black {
+        background: #000;
+        color: #fff;
+        &:hover {
+            background: #fff;
+            color: #000;
+        }
+    }
+    &.red {
+        background: $primary-color;
+        color: #fff;
+        &:hover {
+            background: #fff;
+            color: $primary-color;
+        }
+    }
+}
+
+.sneaker-restoration-container {
+    display: block;
+    background: url('srt-background.webp') no-repeat center center;
+    background-size: cover;
+    padding: 80px 15px;
+    .main-container {
+        background: none;
+        text-align: center;
+        h2 {
+            font-size: 35px;
+            letter-spacing: 1px;
+            font-family: Moonshine, sans-serif;
+            span {
+                color: #D9252A;
+                font-size: 55px;
+                text-transform: uppercase;
+                font-family: Moonshine, sans-serif;
+                display: block;
+            }
+        }
+        h3 {
+            font-size: 23px;
+        }
+        p {
+            max-width: 700px;
+            margin: 0 auto;
+            display: block;
+        }
+        a {
+            font-size: 26px;
+            font-weight: bold;
+        }
+    }
+}
+
+// templates
+@import 'homepage';
+
+@import './blog-banner';
+@import './custom-blog';
+@import './custom-blog-post';
+@import './product-information';
+@import './shoe-results';
+@import './products-all';
+@import './product-content';
+@import './custom-header';
+@import './extra-product-content';
+@import './default-collection';
+@import './featured-collection-swiper'

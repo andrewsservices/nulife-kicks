@@ -1,0 +1,154 @@
+{% paginate blog.articles by 1%} 
+{% assign article_img = article.image.src %}
+<div class="custom-blog-main">
+
+    <div class="featured-blog-image"
+        style="background-image: linear-gradient(to bottom,transparent, black), url({{article_img | img_url:'1000x'}});"
+    >
+        <div class="title-tags">
+            <h1>{{article.title}}</h1>
+            {% assign tags = article.tags %}
+                {% assign lastTag = tags | last %}
+                    {% for tag in tags %}
+                        {% if tag == lastTag %}
+                            <a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{tag}}</a>
+                        {% else %}
+                            <a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{tag | append: ","}}<a>
+                        {% endif %}
+                    {% endfor %}
+        </div>
+    </div>
+    <div class="article-columns">
+        <div class="article-thumbnails">
+            <div class="blog-article">
+                {{article.content}}
+                <div class="back-button">
+                    <a href="/pages/blogs-tips"><span>&lt; BACK TO TIPS </span></a>
+                </div>
+            </div>
+        <div class="blog-thumbnails">
+            <div class="related-content">
+                <h3>Related Content</h3>
+                {% for article in blog.articles limit: 2%}
+                {% assign article_img = article.image.src %}
+                    <a href="{{article.url}}">
+                        <div class="article-preview">
+                            <div class="article-preview-image" style="background:url({{article_img | img_url:'500x'}}); background-repeat:no-repeat; background-size:cover; background-position:center">&nbsp;</div>
+                                <h2>{{article.title}}</h2>
+                                    {% assign tags = article.tags %}
+                                    {% assign lastTag = tags | last %}
+                                    {% for tag in tags %}
+                                        {% if tag == lastTag %}
+                                            <a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{tag}}</a>
+                                        {% else %}
+                                            <a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{tag | append: ","}}<a>
+                                        {% endif %}
+                                {% endfor %}
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+            <div class="shop-products">
+                <h3>Shop Products</h3>
+                {% assign collection = section.settings.collection %}
+                {% assign products = collection.products %}
+                {% for product in products %}
+                {% assign product_url = product.url %}
+                    {% assign product_image = product.featured_image %}
+                    <a href="{{product.url}}">
+                        <div class="product-preview">
+                            <div class="product-image" style="background:url({{product_image | img_url:'500x'}}); background-repeat:no-repeat; background-size:cover; background-position:center">&nbsp;
+                            </div>
+                            <p>{{product.title}}</p>
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+        </div>
+    </div>
+    <div class="paginate">
+{%- if paginate.pages > 1 -%}
+    <nav role="navigation">
+      <ol class="pagination">
+        {%- if paginate.previous-%}
+          <li>
+            <a href="{{ paginate.previous.url }}">
+              <span aria-hidden="true">&lt;</span>
+              PREV <span class="visuallyhidden">page</span>
+            </a>
+          </li>
+        {% comment %} {%- else -%}
+          <li class="disabled">
+            <span aria-hidden="true">&laquo;</span>
+            Previous <span class="visuallyhidden">page</span>
+          </li> {% endcomment %}
+        {%- endif -%}
+
+        {%- for part in paginate.parts -%}
+          {%- if part.is_link -%}
+            <li class="non-active">
+              <a href="{{ part.url }}">
+                <span class="visuallyhidden">page</span> {{ part.title }}
+              </a>
+            </li>
+          {%- else -%}
+            {%- if part.title == paginate.current_page -%}
+              <li class="active" aria-current="page">
+                <span class="visuallyhidden">page</span> {{ part.title }}
+              </li>
+            {%- else -%}
+              <li>
+                <span class="visuallyhidden">page</span> {{ part.title }}
+              </li>
+            {%- endif -%}
+          {%- endif -%}
+        {%- endfor -%}
+
+        {%- if paginate.next -%}
+          <li>
+            <a href="{{ paginate.next.url }}">
+              NEXT <span class="visuallyhidden">page</span>
+              <span aria-hidden="true">&gt;</span>
+            </a>
+          </li>
+        {% comment %} {%- else -%}
+          <li class="disabled">
+            Next <span class="visuallyhidden">page</span>
+            <span aria-hidden="true">&raquo;</span>
+          </li> {% endcomment %}
+        {%- endif -%}
+      </ol>
+    </nav>
+  {%- endif -%}
+{%- endpaginate -%}
+</div>
+    <div class="banner">&nbsp;</div>
+</div>
+
+
+
+
+{% schema %}
+{
+  "name": "custom blog post",
+  "settings": [
+    {
+      "id": "blog",
+      "type": "blog",
+      "label": "Blog Post"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Select Collection"
+    }
+  ],
+  "presets": [
+    {
+      "name": "custom blog post",
+      "settings": {}
+    }
+  ]
+}
+{% endschema %}

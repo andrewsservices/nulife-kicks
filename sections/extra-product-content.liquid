@@ -1,0 +1,271 @@
+<div class="extra-content">
+        <div class="extra-content-container">
+            {% for block in section.blocks %}
+            {% assign type = block.type %}
+                {% case type %} 
+                    {% when 'single-column-text' %}
+                        <div class="extra-content-row centered"> 
+                            <div class="text">
+                                <h1>{{block.settings.single-column-heading}}</h1>
+                            
+                                <h2>{{block.settings.single-column-subHeading}}</h2>
+                            
+                                <p>{{block.settings.single-column-text}}</p>
+                            </div>
+                        </div>
+                    {% when "all-text" %}
+                        <div class="extra-content-row"> 
+                            <div class="text">
+                                <h1>{{block.settings.heading-column1}}</h1>
+                            
+                                <h2>{{block.settings.subHeading-column1}}</h2>
+                            
+                                <p>{{block.settings.text-column1}}</p>
+                            </div>
+                            <div class="text">
+                                <h1>{{block.settings.heading-column2}}</h1>
+                            
+                                <h2>{{block.settings.subHeading-column2}}</h2>
+                            
+                                <p>{{block.settings.text-column2}}</p>
+                            </div>
+                        </div>
+                    {% when "text-left-image-right" %}
+                        <div class="extra-content-row reverse"> 
+                            <div class="text">
+                                <h1>{{block.settings.heading}}</h1>
+                            
+                                <h2>{{block.settings.subHeading}}</h2>
+                            
+                                <p>{{block.settings.rich-text}}</p>
+                            </div>
+                            {% unless block.settings.image == blank %}
+                            <div class="image">
+                                <img src="{{block.settings.image | image_url}}"/>
+                            </div>
+                            {% endunless %}
+                        </div>
+                    {% when "text-right-image-left" %}
+                        <div class="extra-content-row"> 
+                            {% unless block.settings.image == blank %}
+                            <div class="image">
+                                <img src="{{block.settings.image | image_url}}"/>
+                            </div>
+                            {% endunless %}
+                            <div class="text">
+                                <h1>{{block.settings.heading}}</h1>
+                            
+                                <h2>{{block.settings.subHeading}}</h2>
+                            
+                                <p>{{block.settings.rich-text}}</p>
+                            </div>
+                        </div>
+                    {% when "text-left-video-right" %}
+                        <div class="extra-content-row reverse"> 
+                            <div class="text">
+                                <h1>{{block.settings.heading}}</h1>
+                            
+                                <h2>{{block.settings.subHeading}}</h2>
+                            
+                                <p>{{block.settings.rich-text}}</p>
+                            </div>
+                             {% assign videoId = block.settings.video_url | split: '?v=' %}
+                                <iframe width="570" height="315" src="https://www.youtube.com/embed/{{ videoId[1] }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        </div>
+                    {% when "text-right-video-left" %}
+                        <div class="extra-content-row"> 
+                                {% assign videoId = block.settings.video_url | split: '?v=' %}
+                                <iframe width="570" height="315" src="https://www.youtube.com/embed/{{ videoId[1] }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                            <div class="text">
+                                <h1>{{block.settings.heading}}</h1>
+                            
+                                <h2>{{block.settings.subHeading}}</h2>
+                            
+                                <p>{{block.settings.rich-text}}</p>
+                            </div>
+                        </div>
+                    {% else %}
+                        no content
+                {% endcase %}
+        {% endfor %}
+        </div>
+    </div>
+
+
+{% schema %}
+    {
+        "settings":[
+            
+        ],
+        "blocks":[
+            {
+                "name":"single column text",
+                "type":"single-column-text",
+                "settings":[
+                    {
+                        "type":"text",
+                        "id":"single-column-heading",
+                        "label":"single column heading"
+                    },
+                    {
+                        "type":"text",
+                        "id":"single-column-subHeading",
+                        "label":"single column sub heading"
+                    },
+                    {
+                        "type":"richtext",
+                        "id":"single-column-text",
+                        "label":"single column text"
+                    }
+                ]
+            },
+            {
+                "name":"two column text",
+                "type":"all-text",
+                "settings":[
+                    {
+                        "type":"text",
+                        "id":"heading-column1",
+                        "label":"column 1 heading"
+                    },
+                    {
+                        "type":"text",
+                        "id":"subHeading-column1",
+                        "label":"column 1 sub heading"
+                    },
+                    {
+                        "type":"richtext",
+                        "id":"text-column1",
+                        "label":"column 1 text"
+                    },
+                    {
+                        "type":"text",
+                        "id":"heading-column2",
+                        "label":"column 2 heading"
+                    },
+                    {
+                        "type":"text",
+                        "id":"subHeading-column2",
+                        "label":"column 2 sub heading"
+                    },
+                    {
+                        "type":"richtext",
+                        "id":"text-column2",
+                        "label":"column 2 text"
+                    }
+                ]
+            },
+            {
+                "name":"text left image right",
+                "type":"text-left-image-right",
+                "settings":[
+                    {
+                        "type":"text",
+                        "id":"heading",
+                        "label":"heading"
+                    },
+                    {
+                        "type":"text",
+                        "id":"subHeading",
+                        "label":"sub heading"
+                    },
+                    {
+                        "type":"richtext",
+                        "id":"rich-text",
+                        "label":"rich text"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "image",
+                        "label": "image"
+                    }
+                ]
+            },
+            {
+                "name":"text right image left",
+                "type":"text-right-image-left",
+                "settings":[
+                    {
+                        "type": "image_picker",
+                        "id": "image",
+                        "label": "image"
+                    },
+                    {
+                        "type":"text",
+                        "id":"heading",
+                        "label":"heading"
+                    },
+                    {
+                        "type":"text",
+                        "id":"subHeading",
+                        "label":"sub heading"
+                    },
+                    {
+                        "type":"richtext",
+                        "id":"rich-text",
+                        "label":"rich text"
+                    }
+                ]
+            },
+            {
+                "name":"text left video right",
+                "type":"text-left-video-right",
+                "settings":[
+                    {
+                        "type":"text",
+                        "id":"heading",
+                        "label":"heading"
+                    },
+                    {
+                        "type":"text",
+                        "id":"subHeading",
+                        "label":"sub heading"
+                    },
+                    {
+                        "type":"richtext",
+                        "id":"rich-text",
+                        "label":"rich text"
+                    },
+                    {
+                        "type": "text",
+                        "id": "video_url",
+                        "label": "YouTube video URL"
+                    }
+                ]
+            },
+            {
+                "name":"text right video left",
+                "type":"text-right-video-left",
+                "settings":[
+                    {
+                        "type": "text",
+                        "id": "video_url",
+                        "label": "YouTube video URL"
+                    },
+                    {
+                        "type":"text",
+                        "id":"heading",
+                        "label":"heading"
+                    },
+                    {
+                        "type":"text",
+                        "id":"subHeading",
+                        "label":"sub heading"
+                    },
+                    {
+                        "type":"richtext",
+                        "id":"rich-text",
+                        "label":"rich text"
+                    }
+                ]
+            }
+
+        ],
+        "presets":[
+            {
+                "name":"extra product content",
+                "settings":{}
+            }
+        ]
+    }
+{% endschema %}

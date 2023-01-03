@@ -1,0 +1,179 @@
+{%- assign blog = blogs[section.settings.blog] -%}
+
+<div class="custom-blog">
+  <div class="nav-filter">
+
+    <div class="home-blogtitle">
+      <a href="/">
+        <h3>HOME</h3>
+      </a>
+      <h3>/{{blog.title}}</h3></a>
+    </div>
+    <div class="sort">
+
+      <h3>Sort By:</h3>
+
+      <button class="dropdown_button" onclick="show_list()">
+        {{blog.title}}
+      </button>
+
+      <div id="categories_id" class="categories">
+        <li><a href="/pages/blogs-tips">Tips</a></li>
+        <li><a href="/pages/blogs-media">Media</a></li>
+        <li><a href="/pages/blogs-products">Products</a></li>
+        <li><a href="/pages/blogs-news">News</a></li>
+      </div>
+
+    </div>
+  </div>
+
+{%- for article in blog.articles -%}
+{% assign article_img = article.image.src %}
+{% assign blog_img = article.image %}
+{% for tag in article.tags %}
+{% if tag contains 'Featured' %}
+
+
+<div class="featured-blog">
+  <div class="featured-blog-container">
+    <a href="{{article.url}}">
+      <div class="blog_image"
+        style="background: url({{article_img | img_url:'500x'}}); background-repeat:no-repeat; background-size:cover; background-position:center">
+        &nbsp;
+        <div class="hot">
+          <span>HOT</span> &#128293;
+        </div>
+      </div>
+    </a>
+
+    <div class="featured-blog-text">
+
+      <h4>featured post</h4>
+
+      <h2>{{article.title}}</h2>
+
+      <div class="tags">
+        {% assign tags = article.tags %}
+        {% assign lastTag = tags | last %}
+        {% for tag in tags %}
+        {% if tag == lastTag %}
+        <a href="/pages/blogs-{{tag}}">{{tag}}</a>
+        {% else %}
+        <a href="/pages/blogs-{{tag}}">{{tag | append: ","}}<a>
+            {% endif %}
+            {% endfor %}
+      </div>
+
+      <p>{{ article.content | truncate: 150 }}<a class="read-more" href="{{article.url}}">Read More</a></p>
+
+    </div>
+
+
+  </div>
+
+</div>
+
+{% endif %}
+{% endfor %}
+{% endfor %}
+
+
+{% comment %} Blog Articles {% endcomment %}
+
+
+{% paginate blog.articles by 8 %}    
+
+  <div class="articles-list">
+    {% for article in blog.articles limit: 4 %}
+        {% assign article_img = article.image.src %}
+        {% assign article_title = article.title %}
+        {% assign article_tags = article.tags %}
+        {% assign article_content = article.content | truncate: 150 %}
+      <div class="blog-article">
+        <a href="{{article.url}}">
+          <div class="blog_image" style="background: url({{article_img | img_url:'500x'}}); background-repeat:no-repeat; background-size:cover; background-position:center">&nbsp;</div>
+        </a>
+        <h2>{{article_title}}</h2>
+        <div class="tags">
+        {% assign tags = article.tags %}
+        {% assign lastTag = tags | last %}
+        {% for tag in tags %}
+        {% if tag == lastTag %}
+        <a href="/pages/blogs-{{tag}}">{{tag}}</a>
+        {% else %}
+        <a href="/pages/blogs-{{tag}}">{{tag | append: ","}}<a>
+            {% endif %}
+            {% endfor %}
+      </div>
+
+        <p>{{article_content}}<a class="read-more" href="{{article.url}}">Read More</a></p>
+
+      </div>
+    {% endfor %}
+  </div>
+  <div class="content-block">Reserved Content Block</div>
+  <div class="articles-list">
+    {% for article in blog.articles offset: continue %}
+        {% assign article_img = article.image.src %}
+        {% assign article_title = article.title %}
+        {% assign article_tags = article.tags %}
+        {% assign article_content = article.content | truncate: 150 %}
+        <div class="blog-article">
+          <a href="{{article.url}}">
+            <div class="blog_image" style="background: url({{article_img | img_url:'500x'}}); background-repeat:no-repeat; background-size:cover; background-position:center">&nbsp;</div>
+          </a>
+          <h2>{{article_title}}</h2>
+          <div class="tags">
+            {% assign tags = article.tags %}
+            {% assign lastTag = tags | last %}
+            {% for tag in tags %}
+            {% if tag == lastTag %}
+            <a href="/pages/blogs-{{tag}}">{{tag}}</a>
+            {% else %}
+            <a href="/pages/blogs-{{tag}}">{{tag | append: ","}}<a>
+                {% endif %}
+                {% endfor %}
+          </div>
+        <div class="article-content">
+          <p>{{article_content}}<a class="read-more" href="{{article.url}}">Read More</a></p>
+        </div>
+        </div>
+    {% endfor %}
+  </div>
+  {%- if paginate.pages > 1 -%}
+  {% render 'pagination', paginate: paginate, anchor: '' %}
+  {%- endif -%}
+{%- endpaginate -%}
+</div>
+</div>
+
+
+
+{% schema %}
+{
+  "name": "custom blog",
+  "settings": [
+    {
+      "id": "blog",
+      "type": "blog",
+      "label": "Blog"
+    }
+  ],
+  "presets": [
+    {
+      "name": "custom blog",
+      "category": "Blog",
+      "settings": {}
+    }
+  ]
+}
+{% endschema %}
+
+
+
+
+
+
+
+
+

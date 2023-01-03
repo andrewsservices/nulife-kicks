@@ -1,0 +1,105 @@
+.product-content-main-container{
+    width: 100%;
+    background-color: white;
+    h2{
+        color: $primary-color;
+        font-size: 40px;
+        line-height: 50px;
+    }
+    p{
+        color: black;
+        font-size: 23px;
+        line-height: 29px;
+    }
+    img{
+        max-width: 100%;
+        max-height: 100%;
+    }
+    .image-text,.text-image{
+        height: 500px;
+        display:flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+    .text,.image{
+        width: 518px;
+        height: 100%;
+        display:flex;
+    }
+    .image{
+        justify-content: center;
+        align-items: center;
+    }
+    .text{
+        flex-direction: column;
+        justify-content: center;
+    }
+    .centered{
+        width: 868px;
+        height: 800px;
+        margin: 0 auto;
+        text-align: center;
+        display:flex;
+        flex-direction: column;
+        .centered-image{
+            height: 70%;
+            img{
+                max-height: 100%;
+                max-width: 100%;
+            }
+        }
+        .centered-text{
+            height: 30%;
+        }
+    }
+    .reviews{
+        text-align: center;
+        padding: 50px 0;
+    }
+}
+
+@media screen and (max-width: 1100px){
+    .product-content-main-container{
+        .image-text,.text-image{
+            flex-direction: column;
+            height:auto;
+        }
+        .text-image{
+            flex-direction: column-reverse;
+        }
+        .image{
+            height: 300px;
+        }
+        .text,.image{
+            padding: 20px 0;
+        }
+    }
+}
+
+@media screen and (max-width: 940px){
+    .product-content-main-container{
+        .centered{
+            width: 90%;
+            height: auto;
+            .centered-image,.centered-text{
+                padding: 20px 0;
+            }
+        }
+    }
+    .reviews{
+        width: 90%;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (max-width: 640px){
+    .product-content-main-container{
+        .image-text,.text-image{
+            .text,.image{
+                width: 90%;
+            }
+        }
+    }
+}

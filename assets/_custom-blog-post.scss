@@ -1,0 +1,152 @@
+$header-color: #D9252A;
+$text-color: #CBCBCB;
+
+.custom-blog-main{
+    p{
+        font-size: 20px;
+    }
+    .featured-blog-image{
+        background-repeat:no-repeat; 
+        background-size:cover; 
+        background-position:center;
+        height: 1000px;
+        width: 100%;
+        display:flex;
+        align-items: flex-end;
+        justify-content: center;
+        .title-tags{
+            text-align: center;
+            width: 80%;
+            margin-bottom: 100px;
+            h1{
+                color: $header-color;
+                font-size: 70px;
+                line-height: 70px;
+            }
+            a{
+                font-size: 25px;
+            }
+        }
+    }
+    .article-columns{
+        margin: 0 auto;
+        width: 1200px;
+         .article-thumbnails{
+            display: flex;
+            justify-content: space-between;
+            .blog-article{
+                width: 840px;
+                color:$text-color;
+                line-height: 25px;
+                
+                img{
+                    max-width: 100%;
+                }
+                .back-button{
+                    margin-top: 100px;
+                    a{
+                        span{
+                            color: $header-color;
+                            font-size: 35px;
+                            letter-spacing: -2px;
+                        }
+                    }
+                    
+                }
+            }
+            .blog-thumbnails{
+                width: 300px;
+                .related-content{
+                    h3{
+                        margin: 0;
+                        font-size: 35px;
+                        font-weight: bold;
+                    }
+                    .article-preview{
+                        margin-top: 30px;
+                        .article-preview-image{
+                            width: 100%;
+                            height: 230px;
+                            border-radius: 10px;
+                        }
+                        h2{
+                            font-size: 35px;
+                            line-height: 35px;
+                            color: $header-color;
+                            margin: 25px 0 10px;
+                        }
+                        a{
+                            font-size: 20px;
+                        }
+                    }
+                }
+                .shop-products{
+                    margin-top: 50px;
+                    h3{
+                        margin: 0;
+                        font-size: 35px;
+                        font-weight: bold;
+                    }
+                    .product-preview{
+                        margin-top: 30px;
+                        .product-image{
+                            width: 100%;
+                            height: 300px;
+                            margin-bottom: 10px;
+                        }
+                        p{
+                            color:$text-color;
+                            font-size: 18px;
+                            line-height: 22px;
+                        }
+                    }
+                }
+            }
+         }
+    }
+    .banner{
+        height: 600px;
+        background-color: grey;
+        margin-top: 100px;
+    }
+}
+
+@media only screen and (max-width: 650px){
+    .custom-blog-main{
+        .featured-blog-image{
+           height: 400px;
+           background-position: top;
+           margin-bottom: 30px;
+           .title-tags{
+            margin-bottom: 0;
+            h1{
+                font-size: 30px;
+                line-height: 30px;
+                margin-bottom: 30px;
+            }
+           } 
+        }
+        .article-columns{
+            width: 80%;
+            .article-thumbnails{
+                flex-direction: column;
+                .blog-article{
+                    width: 100%;
+                    .back-button{
+                        margin-top: 60px;;
+                    }
+                }
+                .blog-thumbnails{
+                    width: 100%;
+                    margin: 0;
+                    .related-content{
+                        margin-top: 40px;
+                    }
+                }
+            }
+        }
+        .banner{
+            display:none;
+        }
+    }
+}

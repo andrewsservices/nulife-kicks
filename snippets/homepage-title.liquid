@@ -1,0 +1,72 @@
+<div class="homepage-banner">
+    <!-- Slider main container -->
+    <div class="swiper mySwiper1">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+            <!-- Slides -->
+            <div class="swiper-slide">
+                <img src="{{ 'Home_NuLifeKicks_.webp' | asset_url }}" width="{{ image.width }}" height="{{ image.height }}"
+                    loading="lazy" alt="NuLife Kicks" />
+            </div>
+            <div class="swiper-slide">
+                <img src="{{ 'Home_NuLifeKicks_2.webp' | asset_url }}" width="{{ image.width }}" height="{{ image.height }}"
+                    loading="lazy" alt="NuLife Kicks" />
+            </div>
+            <div class="swiper-slide">
+                <img src="{{ 'Home_NuLifeKicks_3.webp' | asset_url }}" width="{{ image.width }}" height="{{ image.height }}"
+                    loading="lazy" alt="NuLife Kicks" />
+            </div>
+            <div class="swiper-slide">
+                <img src="{{ 'Home_NuLifeKicks_4.webp' | asset_url }}" width="{{ image.width }}" height="{{ image.height }}"
+                    loading="lazy" alt="NuLife Kicks" />
+            </div>
+
+            <!-- If we need pagination -->
+            <div class="swiper-pagination"></div>
+        
+            <!-- If we need navigation buttons -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        
+            <!-- If we need scrollbar -->
+            <div class="swiper-scrollbar"></div>
+        </div>
+    </div>
+    
+
+<div class="main-container">
+    <div class="title-container text-center reveal-in">
+        <div>Check out</div>
+        <div>Our best sellers</div>
+    </div>
+    <div class="swiper mySwiper2">
+        <div class="swiper-wrapper">
+            {% for collection in collections %} 
+            {% if collection.title == "Limited Time" %}
+            {% for product in collection.products %}
+
+
+            <div class="swiper-slide">
+                <div class="image">
+                    <img src="{{ product.featured_image | img_url: '400x' }}">
+                </div>
+                <div class="slide-container">
+                    <div class="title">
+                        <h2>{{product.title}}</h2>
+                    </div>
+                    <div class="add-to-cart-buttons">
+                        <form method="post" action="/cart/add">
+                            <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+                            <input type="submit" value="Add To Cart" class="add" />
+                        </form>
+                        <a href="{{product.url}}" class="view">VIEW</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% endif %%}
+            {% endfor %}
+        </div>
+        <div class="swiper-scrollbar"></div>
+    </div>
+</div>

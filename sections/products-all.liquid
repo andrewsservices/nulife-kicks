@@ -1,0 +1,96 @@
+<div class="main-container">
+    {% comment %} <div class="merchandise-header">
+        <div class="header-label">
+            <h1>Shop All</h1>
+        </div>
+    </div> {% endcomment %}
+    <div class="products">
+        {% for product in collections['all'].products %}
+            <a href="{{product.url}}">
+                <div class="merchandise-product">
+                    <div class="product-image">
+                        <img src={{product.featured_image | img_url: '500x'}}/>
+                    </div>
+                    <div class="product-description">
+                        <p>{{product.title}}</p>
+                        <span>4.5 ⭐⭐⭐⭐⭐</span>
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+    {% comment %} <div class="merchandise-guarantee">
+        <div class="guarantee-header">
+            <h1>The Filoso Guarantee</h1>
+        </div>
+        <div class="guarantee-icons">
+            <div class="icons-row">
+                <div class="icon-div">
+                    <div class="seventy-percent">
+                        <img src="{{'icon-1.png' | asset_img_url:'300x'}}"/>
+                    </div>
+                    <div class="thirty-percent">
+                        <h3>100% Money Back Guarantee</h3>
+                    </div>
+                </div>
+                <div class="icon-div">
+                    <div class="seventy-percent">
+                        <img src="{{'icon-2.png' | asset_img_url:'300x'}}"/>
+                    </div>
+                    <div class="thirty-percent">
+                        <h3>Animal Cruelty Free</h3>
+                    </div>
+                </div>
+                <div class="icon-div">
+                    <div class="seventy-percent">
+                        <img src="{{'icon-3.png' | asset_img_url:'300x'}}"/>
+                    </div>
+                    <div class="thirty-percent">
+                        <h3>Made by Master Barbers</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="icons-row">
+                <div class="icon-div">
+                    <div class="seventy-percent">
+                        <img src="{{'icon-1.png' | asset_img_url:'300x'}}"/>
+                    </div>
+                    <div class="thirty-percent">
+                        <h3>Fast & Reliable Shipping</h3>
+                    </div>
+                </div>
+                <div class="icon-div">
+                    <div class="seventy-percent">
+                        <img src="{{'icon-1.png' | asset_img_url:'300x'}}"/>
+                    </div>
+                    <div class="thirty-percent">
+                        <h3>Safe, Healthy Ingredients</h3>
+                    </div>
+                </div>
+                <div class="icon-div">
+                    <div class="seventy-percent">
+                        <img src="{{'icon-1.png' | asset_img_url:'300x'}}"/>
+                    </div>
+                    <div class="thirty-percent">
+                        <h3>Hair-Growth Friendly</h3>
+                    </div>
+                </div>
+            </div>
+
+            
+            
+        </div>
+    </div> {% endcomment %}
+</div>
+
+{% schema %}
+    {
+        "name":"all products",
+        "settings":[],
+        "presets":[
+            {
+                "name":"all products"
+            }
+        ]
+    }
+{% endschema %}

@@ -1,0 +1,29 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "618be75a-6c06-455a-bdc0-d859c59e58f9": {
+      "type": "blog-banner",
+      "settings": {
+        "blog_description": ""
+      }
+    },
+    "be62bccf-6887-451a-90d5-d1510d0a2f75": {
+      "type": "custom-blog",
+      "settings": {
+        "blog": "news"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "618be75a-6c06-455a-bdc0-d859c59e58f9",
+    "be62bccf-6887-451a-90d5-d1510d0a2f75"
+  ]
+}

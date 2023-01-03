@@ -1,0 +1,69 @@
+{% comment %}
+    Renders a set of links for paginated results. Must be used within paginate tags.
+
+    Usage:
+    {% paginate results by 2 %}
+      {% render 'pagination', paginate: paginate, anchor: '#yourID' %}
+    {% endpaginate %}
+
+    Accepts:
+    - paginate: {Object}
+    - anchor: {String} (optional) This can be added so that on page reload it takes you to wherever you've placed your anchor tag.
+{% endcomment %}
+
+<div class="paginate">
+{%- if paginate.pages > 1 -%}
+    <nav role="navigation">
+      <ol class="pagination">
+        {%- if paginate.previous-%}
+          <li>
+            <a href="{{ paginate.previous.url }}">
+              <span aria-hidden="true">&lt;</span>
+              PREV <span class="visuallyhidden">page</span>
+            </a>
+          </li>
+        {% comment %} {%- else -%}
+          <li class="disabled">
+            <span aria-hidden="true">&laquo;</span>
+            Previous <span class="visuallyhidden">page</span>
+          </li> {% endcomment %}
+        {%- endif -%}
+
+        {%- for part in paginate.parts -%}
+          {%- if part.is_link -%}
+            <li class="non-active">
+              <a href="{{ part.url }}">
+                <span class="visuallyhidden">page</span> {{ part.title }}
+              </a>
+            </li>
+          {%- else -%}
+            {%- if part.title == paginate.current_page -%}
+              <li class="active" aria-current="page">
+                <span class="visuallyhidden">page</span> {{ part.title }}
+              </li>
+            {%- else -%}
+              <li>
+                <span class="visuallyhidden">page</span> {{ part.title }}
+              </li>
+            {%- endif -%}
+          {%- endif -%}
+        {%- endfor -%}
+
+        {%- if paginate.next -%}
+          <li>
+            <a href="{{ paginate.next.url }}">
+              NEXT <span class="visuallyhidden">page</span>
+              <span aria-hidden="true">&gt;</span>
+            </a>
+          </li>
+        {% comment %} {%- else -%}
+          <li class="disabled">
+            Next <span class="visuallyhidden">page</span>
+            <span aria-hidden="true">&raquo;</span>
+          </li> {% endcomment %}
+        {%- endif -%}
+      </ol>
+    </nav>
+  {%- endif -%}
+
+</div>

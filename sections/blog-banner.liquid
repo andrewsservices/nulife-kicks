@@ -1,0 +1,32 @@
+
+
+    <div class="blog-banner-main-container">
+        <div class="white">
+            <div class="title-container">
+                <div>EVOLVE OUT OF</div>
+                <div style="color:black">OUTDATED METHODS</div>
+                <p style="color:black">{{section.settings.blog_description}}</p>
+            </div>
+            
+        </div>
+        <div class="image">t</div>   
+    </div>
+
+
+{% schema %}
+    {
+        "name": "blog banner",
+        "settings": [
+            {
+                "type":"textarea",
+                "id":"blog_description",
+                "label":"blog description"
+            }
+        ],
+        "presets":[
+            {
+                "name":"blog banner"
+            }
+        ]
+    }
+{% endschema %}

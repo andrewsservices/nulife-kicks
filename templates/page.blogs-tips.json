@@ -1,0 +1,29 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "1661800078fc5f68e1": {
+      "type": "blog-banner",
+      "settings": {
+        "blog_description": ""
+      }
+    },
+    "16618000824ffb72e3": {
+      "type": "custom-blog",
+      "settings": {
+        "blog": "tips"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "1661800078fc5f68e1",
+    "16618000824ffb72e3"
+  ]
+}

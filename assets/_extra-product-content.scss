@@ -1,0 +1,102 @@
+.extra-content{
+    width: 100%;
+    background-color: white;
+    
+    .extra-content-container{
+    width: 1165px;
+    margin: 0 auto;
+    background-color: white;
+    
+    .extra-content-row{
+        width: 100%;
+        display:flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 50px 0;
+        border-bottom: 2px solid #D6D6D6;
+        
+        .text{
+            text-align: center;
+            display:flex;
+            flex-direction: column;
+            width: 527px;
+            h1,h2,p{
+                color: black;
+            }
+            h1{
+                font-size: 30px;
+                text-transform: uppercase;
+                margin-bottom: 0;
+                
+            }
+            h2{
+                margin: 25px 0;
+                
+            }
+        }
+        .image{
+            width: 570px;
+            height: 344px;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            img{
+                max-width: 100%;
+                max-height: 100%;
+            }
+        }
+        
+    }
+    .centered{
+        justify-content: center;
+        .text{
+            width: 800px;
+        }
+    }
+    }
+}
+
+@media only screen and (max-width: 1200px){
+    .extra-content{
+        .extra-content-container{
+            width: 100%;
+            .extra-content-row{
+                flex-direction: column;
+                align-items: center;
+                .text{
+                    h1{
+                        margin-top: 35px;
+                    }
+                }
+            }
+            .reverse{
+                flex-direction: column-reverse;
+            }
+        }    
+    }
+} 
+
+@media only screen and (max-width: 800px){
+    .extra-content{
+        .extra-content-container{
+            .centered{
+                .text{
+                    width: 100%;
+                }
+            }
+        }
+    }
+    
+}
+
+@media only screen and (max-width: 570px){
+    .extra-content{
+        .extra-content-container{
+            .extra-content-row{
+                .text,iframe{
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

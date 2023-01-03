@@ -1,0 +1,29 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "9387e355-67a1-4166-ae8c-cf51854884e8": {
+      "type": "blog-banner",
+      "settings": {
+        "blog_description": ""
+      }
+    },
+    "e5914d51-ad11-4ba7-bd69-3788be88b24d": {
+      "type": "custom-blog",
+      "settings": {
+        "blog": "media"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "9387e355-67a1-4166-ae8c-cf51854884e8",
+    "e5914d51-ad11-4ba7-bd69-3788be88b24d"
+  ]
+}

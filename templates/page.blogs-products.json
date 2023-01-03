@@ -1,0 +1,29 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "bbc6240a-1656-4899-8a9b-b86a426684a1": {
+      "type": "blog-banner",
+      "settings": {
+        "blog_description": ""
+      }
+    },
+    "05697b6d-cf42-45bd-b10e-cd4f34b9d3a1": {
+      "type": "custom-blog",
+      "settings": {
+        "blog": "products"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "bbc6240a-1656-4899-8a9b-b86a426684a1",
+    "05697b6d-cf42-45bd-b10e-cd4f34b9d3a1"
+  ]
+}
